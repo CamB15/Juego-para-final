@@ -11,15 +11,19 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(3, 6)] private string[] lines;
 
-    private bool inRange;
+    public bool inRange;
     private bool dialogueStart;
     private int lineIndex;
     private float typingTime = 0.05f;
 
+    void Start()
+    {
+
+    }
     void Update()
     {
         if (inRange && Input.GetButtonDown("Fire1"))
-        {
+        { 
             if (!dialogueStart)
             {
                 StartDialogue();
@@ -37,6 +41,7 @@ public class Dialogue : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collission)
     {
+        
         if (collission.CompareTag("Player"))
         {
             inRange = true;
@@ -91,4 +96,6 @@ public class Dialogue : MonoBehaviour
         }
 
     }
+
+  
 }

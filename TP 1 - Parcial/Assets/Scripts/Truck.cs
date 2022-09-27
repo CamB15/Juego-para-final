@@ -2,35 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class house : MonoBehaviour
+public class Truck : MonoBehaviour
 {
+  
     private inventory inventory;
-    private Animator myanim;
     private bool val;
     private bool inRange;
-    public GameObject glassPrefab;
-    private Dialogue dialogue;
-
+    public GameObject threadPrefab;
 
 
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
-        myanim = GetComponent<Animator>();
-        dialogue = GetComponent<Dialogue>();
     }
 
     void Update()
     {
-        if (inventory.rock == true)
+        if (inventory.glass == true)
         {
             if (inRange && Input.GetButtonDown("Fire1"))
             {
-                dialogue.inRange = false;
-                val = myanim.GetBool("Change");
-                val = true;
-                myanim.SetBool("Change", val);
-                SpawnGlass();
+                SpawnThread();
                 // falta hacer que se quite del inventario y que el slot se pueda volver a usar
 
             }
@@ -42,7 +34,6 @@ public class house : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = true;
-
         }
     }
 
@@ -55,11 +46,13 @@ public class house : MonoBehaviour
         }
     }
 
-    private void SpawnGlass()
+    private void SpawnThread()
     {
-        GameObject item = Instantiate(glassPrefab) as GameObject;
-        item.transform.position = new Vector2(10, -1);
+        GameObject item = Instantiate(threadPrefab) as GameObject;
+        item.transform.position = new Vector2(-17, -3);
     }
 }
 
   
+
+

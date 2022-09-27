@@ -8,6 +8,9 @@ TagManager:
   - Bino
   - Glass
   - Lights
+  - Talk
+  - Thread
+  - Ladder
   layers:
   - Default
   - TransparentFX
