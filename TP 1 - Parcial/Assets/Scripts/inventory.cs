@@ -10,14 +10,11 @@ public class inventory : MonoBehaviour
     public bool bino;
     public bool glass;
     public bool lights;
-    void Start()
-    {
-        
-    }
+    public bool wood;
+    public bool thread;
+    public bool key;
+    public bool ladder;
+    public GameObject clone;
+  
 
-    
-    void Update()
-    {
-        
-    }
 }

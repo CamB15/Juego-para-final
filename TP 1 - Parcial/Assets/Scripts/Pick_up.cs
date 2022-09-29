@@ -26,12 +26,12 @@ public class Pick_up : MonoBehaviour
         if (inRange && Input.GetButtonDown("Fire1"))
         {
             if (this.tag == "Rock") inventory.rock = true;
-
             else if (this.tag == "Bino") inventory.bino = true;
-
             else if (this.tag == "Glass") inventory.glass = true;
-
             else if (this.tag == "Lights") inventory.lights = true;
+            else if (this.tag == "Wood") inventory.wood = true;
+            else if (this.tag == "Thread") inventory.thread = true;
+            else if (this.tag == "Ladder") inventory.ladder = true;
 
             CheckSlots();
         }
@@ -41,11 +41,12 @@ public class Pick_up : MonoBehaviour
     {
         for (int i = 0; i < inventory.slots.Length; i++)
         {
+          
             if (inventory.isFull[i] == false)
             {
                 //el item se agrega
                 inventory.isFull[i] = true;
-                Instantiate(item, inventory.slots[i].transform, false);
+                inventory.clone = Instantiate(item, inventory.slots[i].transform, false);
                 Destroy(gameObject);
                 break;
             }

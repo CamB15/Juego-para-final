@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class house : MonoBehaviour
+public class change_swing : MonoBehaviour
 {
     private inventory inventory;
     private Animator myanim;
     private bool val;
     private bool inRange;
-    public GameObject glassPrefab;
+    public GameObject woodPrefab;
     private Dialogue dialogue;
-
-
 
     void Start()
     {
@@ -22,27 +20,19 @@ public class house : MonoBehaviour
 
     void Update()
     {
-        if (inRange && Input.GetButtonDown("Fire1"))
+        if (inventory.lights == true)
         {
-            if (inventory.rock == true)
+            if (inRange && Input.GetButtonDown("Fire1"))
             {
+                dialogue.NextLine();
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
-                SpawnGlass();
-                Destroy(inventory.clone);
-            }
-            else if (inventory.key == true)
-            { //hacer que aparescan enemigos
-                dialogue.inRange = false;
-                val = myanim.GetBool("Change");
-                val = false;
-                myanim.SetBool("Change", val);
+                SpawnWood();
                 Destroy(inventory.clone);
             }
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -63,11 +53,13 @@ public class house : MonoBehaviour
         }
     }
 
-    private void SpawnGlass()
+    private void SpawnWood()
     {
-        GameObject item = Instantiate(glassPrefab) as GameObject;
-        item.transform.position = new Vector2(10, -1);
+        GameObject item = Instantiate(woodPrefab) as GameObject;
+        item.transform.position = new Vector2(-3.5f, 2.5f);
+        Destroy(dialogue);
+        Destroy(dialogue.dialogueMark);
     }
-}
 
   
+}

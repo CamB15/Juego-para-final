@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class house : MonoBehaviour
+public class Tree : MonoBehaviour
 {
     private inventory inventory;
     private Animator myanim;
     private bool val;
     private bool inRange;
-    public GameObject glassPrefab;
+    public GameObject tigerPrefab;
     private Dialogue dialogue;
-
-
 
     void Start()
     {
@@ -24,25 +22,24 @@ public class house : MonoBehaviour
     {
         if (inRange && Input.GetButtonDown("Fire1"))
         {
-            if (inventory.rock == true)
+            if (inventory.ladder == true)
             {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
-                SpawnGlass();
                 Destroy(inventory.clone);
             }
-            else if (inventory.key == true)
-            { //hacer que aparescan enemigos
+            else if (inventory.wood == true)
+            { 
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = false;
                 myanim.SetBool("Change", val);
+                SpawnTiger();
                 Destroy(inventory.clone);
             }
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -50,7 +47,6 @@ public class house : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = true;
-
         }
     }
 
@@ -59,15 +55,12 @@ public class house : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = false;
-
         }
     }
 
-    private void SpawnGlass()
+    private void SpawnTiger()
     {
-        GameObject item = Instantiate(glassPrefab) as GameObject;
+        GameObject item = Instantiate(tigerPrefab) as GameObject;
         item.transform.position = new Vector2(10, -1);
     }
 }
-
-  

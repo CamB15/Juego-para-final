@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class house : MonoBehaviour
+public class Costume : MonoBehaviour
 {
     private inventory inventory;
     private Animator myanim;
     private bool val;
     private bool inRange;
-    public GameObject glassPrefab;
+    public GameObject codePrefab;
     private Dialogue dialogue;
-
-
 
     void Start()
     {
@@ -22,27 +20,18 @@ public class house : MonoBehaviour
 
     void Update()
     {
-        if (inRange && Input.GetButtonDown("Fire1"))
+        if (inventory.thread == true)
         {
-            if (inventory.rock == true)
+            if (inRange && Input.GetButtonDown("Fire1"))
             {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
-                SpawnGlass();
-                Destroy(inventory.clone);
-            }
-            else if (inventory.key == true)
-            { //hacer que aparescan enemigos
-                dialogue.inRange = false;
-                val = myanim.GetBool("Change");
-                val = false;
-                myanim.SetBool("Change", val);
+                SpawnCode();
                 Destroy(inventory.clone);
             }
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -50,7 +39,6 @@ public class house : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = true;
-
         }
     }
 
@@ -59,15 +47,12 @@ public class house : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = false;
-
         }
     }
 
-    private void SpawnGlass()
+    private void SpawnCode()
     {
-        GameObject item = Instantiate(glassPrefab) as GameObject;
+        GameObject item = Instantiate(codePrefab) as GameObject;
         item.transform.position = new Vector2(10, -1);
     }
 }
-
-  

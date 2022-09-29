@@ -5,8 +5,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueMark;
-    [SerializeField] private GameObject talk;
+    public GameObject dialogueMark;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(3, 6)] private string[] lines;
@@ -15,13 +14,12 @@ public class Dialogue : MonoBehaviour
     private bool dialogueStart;
     private int lineIndex;
     private float typingTime = 0.05f;
+    public GameObject item;
+    private GameObject clone;
 
-    void Start()
-    {
-
-    }
     void Update()
     {
+
         if (inRange && Input.GetButtonDown("Fire1"))
         { 
             if (!dialogueStart)
@@ -30,7 +28,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (dialogueText.text == lines[lineIndex])
             {
-                NextLine();
+                Stopline();
             }
             else
             {
@@ -60,10 +58,10 @@ public class Dialogue : MonoBehaviour
 
     private void StartDialogue()
     {
+        SpawnFace();
         dialogueStart = true;
         dialoguePanel.SetActive(true);
         dialogueMark.SetActive(false);
-        talk.SetActive(true);
         lineIndex = 0;
         Time.timeScale = 0f;
         StartCoroutine(Showline());
@@ -78,23 +76,27 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSecondsRealtime(typingTime);
         }
     }
-
-    void NextLine()
+    public void NextLine()
     {
         lineIndex++;
         if (lineIndex < lines.Length)
         {
             StartCoroutine(Showline());
         }
-        else
-        {
+    }
+    void Stopline()
+    {
             dialogueStart = false;
             dialoguePanel.SetActive(false);
+            Destroy(clone);
             dialogueMark.SetActive(true);
-            talk.SetActive(false);
             Time.timeScale = 1;
-        }
 
+    }
+    private void SpawnFace()
+    {
+        clone = Instantiate(item, dialoguePanel.transform, false);
+        
     }
 
   

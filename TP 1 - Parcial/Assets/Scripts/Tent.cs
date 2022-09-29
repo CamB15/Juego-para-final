@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class house : MonoBehaviour
+public class Tent : MonoBehaviour
 {
+
     private inventory inventory;
-    private Animator myanim;
-    private bool val;
     private bool inRange;
-    public GameObject glassPrefab;
+    public GameObject boxPrefab;
     private Dialogue dialogue;
-
-
 
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
-        myanim = GetComponent<Animator>();
         dialogue = GetComponent<Dialogue>();
     }
 
@@ -27,22 +23,10 @@ public class house : MonoBehaviour
             if (inventory.rock == true)
             {
                 dialogue.inRange = false;
-                val = myanim.GetBool("Change");
-                val = true;
-                myanim.SetBool("Change", val);
                 SpawnGlass();
-                Destroy(inventory.clone);
-            }
-            else if (inventory.key == true)
-            { //hacer que aparescan enemigos
-                dialogue.inRange = false;
-                val = myanim.GetBool("Change");
-                val = false;
-                myanim.SetBool("Change", val);
-                Destroy(inventory.clone);
             }
         }
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -65,9 +49,7 @@ public class house : MonoBehaviour
 
     private void SpawnGlass()
     {
-        GameObject item = Instantiate(glassPrefab) as GameObject;
+        GameObject item = Instantiate(boxPrefab) as GameObject;
         item.transform.position = new Vector2(10, -1);
     }
 }
-
-  
