@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour
+public class tree_spawn : MonoBehaviour
 {
     private inventory inventory;
     private Animator myanim;
@@ -24,20 +24,22 @@ public class Tree : MonoBehaviour
         {
             if (inventory.ladder == true)
             {
-                dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
                 Destroy(inventory.clone);
+                inventory.ladder = false;
             }
             else if (inventory.wood == true)
-            { 
+            {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = false;
                 myanim.SetBool("Change", val);
                 SpawnTiger();
                 Destroy(inventory.clone);
+                inventory.wood = false;
+
             }
         }
     }
@@ -61,6 +63,9 @@ public class Tree : MonoBehaviour
     private void SpawnTiger()
     {
         GameObject item = Instantiate(tigerPrefab) as GameObject;
-        item.transform.position = new Vector2(10, -1);
+        item.transform.position = new Vector2(-6.3f, -8.4f);
+        Destroy(dialogue);
+        Destroy(dialogue.dialogueMark);
+
     }
 }

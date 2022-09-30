@@ -12,6 +12,7 @@ TagManager:
   - Thread
   - Ladder
   - Wood
+  - Tiger
   layers:
   - Default
   - TransparentFX

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class change_swing : MonoBehaviour
+public class NPC_spawn : MonoBehaviour
 {
-    private inventory inventory;
+     private inventory inventory;
     private Animator myanim;
     private bool val;
     private bool inRange;
-    public GameObject woodPrefab;
+    public GameObject codePrefab;
     private Dialogue dialogue;
 
     void Start()
@@ -20,16 +20,17 @@ public class change_swing : MonoBehaviour
 
     void Update()
     {
-        if (inventory.lights == true)
+        if (inventory.tiger == true)
         {
+            dialogue.inRange = false;
             if (inRange && Input.GetButtonDown("Fire1"))
             {
-                dialogue.inRange = false;
-                val = myanim.GetBool("Change");
-                val = true;
-                myanim.SetBool("Change", val);
-                SpawnWood();
+               // val = myanim.GetBool("Change");
+               // val = true;
+               // myanim.SetBool("Change", val);
+                SpawnNum();
                 Destroy(inventory.clone);
+                inventory.tiger = false;
             }
         }
     }
@@ -50,13 +51,12 @@ public class change_swing : MonoBehaviour
         }
     }
 
-    private void SpawnWood()
+    private void SpawnNum()
     {
-        GameObject item = Instantiate(woodPrefab) as GameObject;
-        item.transform.position = new Vector2(-3.5f, 2.5f);
+        GameObject item = Instantiate(codePrefab) as GameObject;
+        item.transform.position = new Vector2(1.96f, 0.7f);
         Destroy(dialogue);
         Destroy(dialogue.dialogueMark);
     }
 
-  
 }

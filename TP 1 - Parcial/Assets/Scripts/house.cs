@@ -32,6 +32,7 @@ public class house : MonoBehaviour
                 myanim.SetBool("Change", val);
                 SpawnGlass();
                 Destroy(inventory.clone);
+                inventory.rock = false;
             }
             else if (inventory.key == true)
             { //hacer que aparescan enemigos

@@ -28,7 +28,7 @@ public class Dialogue : MonoBehaviour
             }
             else if (dialogueText.text == lines[lineIndex])
             {
-                Stopline();
+                NextLine();
             }
             else
             {
@@ -76,23 +76,23 @@ public class Dialogue : MonoBehaviour
             yield return new WaitForSecondsRealtime(typingTime);
         }
     }
-    public void NextLine()
+    private void NextLine()
     {
         lineIndex++;
         if (lineIndex < lines.Length)
         {
-            StartCoroutine(Showline());
+            StartCoroutine(Showline()); 
         }
-    }
-    void Stopline()
-    {
+        else
+        {
             dialogueStart = false;
             dialoguePanel.SetActive(false);
             Destroy(clone);
             dialogueMark.SetActive(true);
             Time.timeScale = 1;
-
+        }
     }
+
     private void SpawnFace()
     {
         clone = Instantiate(item, dialoguePanel.transform, false);

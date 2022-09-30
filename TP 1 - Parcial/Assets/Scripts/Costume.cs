@@ -22,14 +22,15 @@ public class Costume : MonoBehaviour
     {
         if (inventory.thread == true)
         {
+            dialogue.inRange = false;
             if (inRange && Input.GetButtonDown("Fire1"))
-            {
-                dialogue.inRange = false;
+            { 
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
-                SpawnCode();
+                Spawnnum();
                 Destroy(inventory.clone);
+                inventory.thread = false;
             }
         }
     }
@@ -50,9 +51,11 @@ public class Costume : MonoBehaviour
         }
     }
 
-    private void SpawnCode()
+    private void Spawnnum()
     {
         GameObject item = Instantiate(codePrefab) as GameObject;
-        item.transform.position = new Vector2(10, -1);
+        item.transform.position = new Vector2(15.6f, 0.5f);
+        Destroy(dialogue);
+        Destroy(dialogue.dialogueMark);
     }
 }

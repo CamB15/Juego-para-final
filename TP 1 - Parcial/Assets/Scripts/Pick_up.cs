@@ -32,6 +32,7 @@ public class Pick_up : MonoBehaviour
             else if (this.tag == "Wood") inventory.wood = true;
             else if (this.tag == "Thread") inventory.thread = true;
             else if (this.tag == "Ladder") inventory.ladder = true;
+            else if (this.tag == "Tiger") inventory.tiger = true;
 
             CheckSlots();
         }

@@ -14,6 +14,7 @@ public class inventory : MonoBehaviour
     public bool thread;
     public bool key;
     public bool ladder;
+    public bool tiger;
     public GameObject clone;
   
 
