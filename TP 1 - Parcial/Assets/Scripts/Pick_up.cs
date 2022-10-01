@@ -25,14 +25,15 @@ public class Pick_up : MonoBehaviour
     {
         if (inRange && Input.GetButtonDown("Fire1"))
         {
-            if (this.tag == "Rock") inventory.rock = true;
-            else if (this.tag == "Bino") inventory.bino = true;
-            else if (this.tag == "Glass") inventory.glass = true;
-            else if (this.tag == "Lights") inventory.lights = true;
-            else if (this.tag == "Wood") inventory.wood = true;
-            else if (this.tag == "Thread") inventory.thread = true;
-            else if (this.tag == "Ladder") inventory.ladder = true;
-            else if (this.tag == "Tiger") inventory.tiger = true;
+            if (this.tag == "Rock") inventory.inInventory[0] = true;
+            else if (this.tag == "Bino") inventory.inInventory[1] = true;
+            else if (this.tag == "Glass") inventory.inInventory[2] = true;
+            else if (this.tag == "Lights") inventory.inInventory[3] = true;
+            else if (this.tag == "Wood") inventory.inInventory[4] = true;
+            else if (this.tag == "Thread") inventory.inInventory[5] = true;
+            else if (this.tag == "Ladder") inventory.inInventory[6] = true;
+            else if (this.tag == "Tiger") inventory.inInventory[7] = true;
+            else if (this.tag == "Key") inventory.inInventory[8] = true;
 
             CheckSlots();
         }

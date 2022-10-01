@@ -24,7 +24,7 @@ public class house : MonoBehaviour
     {
         if (inRange && Input.GetButtonDown("Fire1"))
         {
-            if (inventory.rock == true)
+            if (inventory.inInventory[0] == true)
             {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
@@ -32,9 +32,8 @@ public class house : MonoBehaviour
                 myanim.SetBool("Change", val);
                 SpawnGlass();
                 Destroy(inventory.clone);
-                inventory.rock = false;
             }
-            else if (inventory.key == true)
+            else if (inventory.inInventory[8] == true)
             { //hacer que aparescan enemigos
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");

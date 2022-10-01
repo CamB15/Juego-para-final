@@ -6,15 +6,7 @@ public class inventory : MonoBehaviour
 {
     public bool[] isFull;
     public GameObject[] slots;
-    public bool rock;
-    public bool bino;
-    public bool glass;
-    public bool lights;
-    public bool wood;
-    public bool thread;
-    public bool key;
-    public bool ladder;
-    public bool tiger;
+    public bool[] inInventory;
     public GameObject clone;
   
 

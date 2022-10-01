@@ -22,15 +22,14 @@ public class tree_spawn : MonoBehaviour
     {
         if (inRange && Input.GetButtonDown("Fire1"))
         {
-            if (inventory.ladder == true)
+            if (inventory.inInventory[6] == true)
             {
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
                 Destroy(inventory.clone);
-                inventory.ladder = false;
             }
-            else if (inventory.wood == true)
+            else if (inventory.inInventory[4] == true)
             {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
@@ -38,7 +37,6 @@ public class tree_spawn : MonoBehaviour
                 myanim.SetBool("Change", val);
                 SpawnTiger();
                 Destroy(inventory.clone);
-                inventory.wood = false;
 
             }
         }

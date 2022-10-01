@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class change_swing : MonoBehaviour
+public class Interact : MonoBehaviour
 {
     private inventory inventory;
     private Animator myanim;
     private bool val;
     private bool inRange;
-    public GameObject woodPrefab;
+    public GameObject prefab;
     private Dialogue dialogue;
+    public int i;
+    public float moveX;
+    public float moveY;
 
     void Start()
     {
@@ -20,16 +23,17 @@ public class change_swing : MonoBehaviour
 
     void Update()
     {
-        if (inventory.lights == true)
+        if (inventory.inInventory[i] == true)
         {
+            dialogue.inRange = false;
             if (inRange && Input.GetButtonDown("Fire1"))
             {
-                dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
-                SpawnWood();
+                Spawn();
                 Destroy(inventory.clone);
+                inventory.inInventory[i] = false;
             }
         }
     }
@@ -50,13 +54,12 @@ public class change_swing : MonoBehaviour
         }
     }
 
-    private void SpawnWood()
+    private void Spawn()
     {
-        GameObject item = Instantiate(woodPrefab) as GameObject;
-        item.transform.position = new Vector2(-3.5f, 2.5f);
+        GameObject item = Instantiate(prefab) as GameObject;
+        item.transform.position = new Vector2(moveX, moveY);
         Destroy(dialogue);
         Destroy(dialogue.dialogueMark);
     }
 
-  
 }

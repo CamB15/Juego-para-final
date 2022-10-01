@@ -214,10 +214,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 15946334}
-  - component: {fileID: 15946336}
+  - component: {fileID: 15946337}
   - component: {fileID: 15946333}
   - component: {fileID: 15946335}
   - component: {fileID: 15946332}
+  - component: {fileID: 15946336}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -337,7 +338,26 @@ MonoBehaviour:
   - You found it! Thanks, i was so scared without it!
   inRange: 0
   item: {fileID: 2340656348194399332, guid: c4155aae292cc1e4ea8d63d654900a3a, type: 3}
---- !u!114 &15946336
+--- !u!95 &15946336
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15946331}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4e63aa72958cab4ba0b7d8bebb5287c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &15946337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,10 +366,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 15946331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8b16509a57cd04eb3198f8f646ae59, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cfa221e085ad0944a3680cb36eb51ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codePrefab: {fileID: 4972237452716162012, guid: c5335843885e1834db0395d5436706a8, type: 3}
+  prefab: {fileID: 2129497294357199043, guid: aeda1ff1952d24942a0f85268afc73a2, type: 3}
+  i: 7
+  moveX: 2.21
+  moveY: 0.65
 --- !u!1 &50889566
 GameObject:
   m_ObjectHideFlags: 0
@@ -10812,13 +10835,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326209057}
-  - component: {fileID: 326209058}
   - component: {fileID: 326209056}
+  - component: {fileID: 326209058}
   - component: {fileID: 326209055}
   - component: {fileID: 326209054}
   - component: {fileID: 326209053}
   - component: {fileID: 326209052}
   - component: {fileID: 326209051}
+  - component: {fileID: 326209059}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
@@ -11038,10 +11062,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 326209050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58aa8d3b43f2e044ca8bb20a83d2c457, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cfa221e085ad0944a3680cb36eb51ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threadPrefab: {fileID: 70299482461480075, guid: 564dcb172499dcb4691f3aef8332d9e0, type: 3}
+  prefab: {fileID: 70299482461480075, guid: 564dcb172499dcb4691f3aef8332d9e0, type: 3}
+  i: 2
+  moveX: -17
+  moveY: -3
 --- !u!4 &326209057
 Transform:
   m_ObjectHideFlags: 0
@@ -11077,6 +11104,25 @@ MonoBehaviour:
     the truck.
   inRange: 0
   item: {fileID: 4483395836746580012, guid: 67f988c97fcbeff409938d350e0eecd5, type: 3}
+--- !u!95 &326209059
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326209050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15eebf793ecbb9044a8fc100a610b9e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &352937571
 GameObject:
   m_ObjectHideFlags: 0
@@ -15215,6 +15261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445482191}
+  - component: {fileID: 1445482192}
   - component: {fileID: 1445482190}
   - component: {fileID: 1445482189}
   m_Layer: 0
@@ -15309,12 +15356,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445482188}
   m_LocalRotation: {x: -0, y: -0, z: -0.36493924, w: 0.93103135}
-  m_LocalPosition: {x: -13.73, y: -9.36, z: 0}
+  m_LocalPosition: {x: -13.2, y: -10.1, z: 0}
   m_LocalScale: {x: 0.25404987, y: 0.25404987, z: 0.25404987}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -42.808}
+--- !u!114 &1445482192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445482188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adee116d054b2f740b08cb4b73d538b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeNum: {fileID: 754421820296408040, guid: 9dee8d0903280b44e9dd0109b03773ce, type: 3}
 --- !u!1 &1536147519
 GameObject:
   m_ObjectHideFlags: 0
@@ -15324,7 +15384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536147522}
-  - component: {fileID: 1536147527}
+  - component: {fileID: 1536147525}
   - component: {fileID: 1536147528}
   - component: {fileID: 1536147521}
   - component: {fileID: 1536147520}
@@ -15474,7 +15534,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.208623, y: 0.9259147}
   m_EdgeRadius: 0
---- !u!114 &1536147527
+--- !u!114 &1536147525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15483,10 +15543,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536147519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb9afef87bf2ad943a9e7b1c4a175bbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cfa221e085ad0944a3680cb36eb51ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodPrefab: {fileID: 2861370944148069842, guid: e313f3d85a2292848a448befadfce83a, type: 3}
+  prefab: {fileID: 2861370944148069842, guid: e313f3d85a2292848a448befadfce83a, type: 3}
+  i: 3
+  moveX: -3.5
+  moveY: 2.5
 --- !u!114 &1536147528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16785,15 +16848,7 @@ MonoBehaviour:
   - {fileID: 1337963623}
   - {fileID: 579243881}
   - {fileID: 887181581}
-  rock: 0
-  bino: 0
-  glass: 0
-  lights: 0
-  wood: 0
-  thread: 0
-  key: 0
-  ladder: 0
-  tiger: 0
+  inInventory: 0000000000000000
   clone: {fileID: 0}
 --- !u!1 &1956460870
 GameObject:
@@ -17126,6 +17181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083865758}
+  - component: {fileID: 2083865766}
   - component: {fileID: 2083865765}
   - component: {fileID: 2083865764}
   - component: {fileID: 2083865757}
@@ -17234,7 +17290,7 @@ CompositeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083865755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -18437,6 +18493,22 @@ MonoBehaviour:
   - The door is locked, i need a key.
   inRange: 0
   item: {fileID: 4483395836746580012, guid: 67f988c97fcbeff409938d350e0eecd5, type: 3}
+--- !u!114 &2083865766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083865755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfa221e085ad0944a3680cb36eb51ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  i: 0
+  moveX: 0
+  moveY: 0
 --- !u!1 &2099496512
 GameObject:
   m_ObjectHideFlags: 0
@@ -18553,10 +18625,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2099496512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2c43588da124743b4224e0d128c703, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cfa221e085ad0944a3680cb36eb51ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codePrefab: {fileID: 2129497294357199043, guid: aeda1ff1952d24942a0f85268afc73a2, type: 3}
+  prefab: {fileID: 4972237452716162012, guid: c5335843885e1834db0395d5436706a8, type: 3}
+  i: 5
+  moveX: 15.6
+  moveY: 0.5
 --- !u!95 &2099496517
 Animator:
   serializedVersion: 3
@@ -19031,9 +19106,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2115788580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2afddfc37fb434aa42a8236e9fa612, type: 3}
+  m_Script: {fileID: 11500000, guid: adee116d054b2f740b08cb4b73d538b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeNum: {fileID: 0}
 --- !u!1 &2128739549
 GameObject:
   m_ObjectHideFlags: 0

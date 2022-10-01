@@ -15,7 +15,7 @@ public class Pics : MonoBehaviour
     }
     void Update()
     {
-        if (inventory.bino == true)
+        if (inventory.inInventory[1] == true)
         {
             if (inRange && Input.GetButtonDown("Fire1"))
             {
