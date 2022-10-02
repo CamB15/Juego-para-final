@@ -8,24 +8,60 @@ public class Spawn_code : MonoBehaviour
     private GameObject item;
     private bool inRange;
     private bool flipflop = false;
+    [SerializeField] private int i;
+    private Dialogue dialogue;
+    private inventory inventory;
 
+    void Start ()
+    {
+        dialogue = GetComponent<Dialogue>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
+    }
     void Update()
     {
-        if (inRange && Input.GetButtonDown("Fire1"))
-        {
-            if (flipflop == false)
+        if(this.CompareTag("Tent"))
+        { 
+            if (inventory.inInventory[i] == true)
             {
-                SpawnCode();
-                flipflop = !flipflop;
-                Time.timeScale = 0;
-            }
-            else
-            {
-                flipflop = !flipflop;
-                Destroy(item);
-                Time.timeScale = 1;
+                dialogue.inRange = false;
+                if (inRange && Input.GetButtonDown("Fire1"))
+                {
+                    if (flipflop == false)
+                    {
+                        SpawnCode();
+                        flipflop = !flipflop;
+                        Time.timeScale = 0;
+                    }
+                    else
+                    {
+                        flipflop = !flipflop;
+                        Destroy(item);
+                        Time.timeScale = 1;
+                    }
+                    Destroy(dialogue);
+                    Destroy(dialogue.dialogueMark);
+                }
             }
         }
+        else
+        {
+            if (inRange && Input.GetButtonDown("Fire1"))
+            {
+                if (flipflop == false)
+                {
+                    SpawnCode();
+                    flipflop = !flipflop;
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    flipflop = !flipflop;
+                    Destroy(item);
+                    Time.timeScale = 1;
+                }
+            }
+        }
+        
     } 
     void OnTriggerEnter2D(Collider2D collission)
     {
@@ -44,6 +80,6 @@ public class Spawn_code : MonoBehaviour
     }
     private void SpawnCode()
     {
-        item = Instantiate(codeNum, GameObject.FindGameObjectWithTag("Player").transform, false);
+        item = Instantiate(codeNum, GameObject.FindGameObjectWithTag("Canvas").transform, false);
     }
 }

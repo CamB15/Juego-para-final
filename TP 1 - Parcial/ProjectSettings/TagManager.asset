@@ -13,6 +13,8 @@ TagManager:
   - Ladder
   - Wood
   - Tiger
+  - Canvas
+  - Tent
   layers:
   - Default
   - TransparentFX

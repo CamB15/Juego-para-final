@@ -7,7 +7,7 @@ public class Player_move : MonoBehaviour
     [SerializeField] float speed = 3;
     private Rigidbody2D myrig;
     private Animator myanim;
-    private Vector2 moveInput;
+    public Vector2 moveInput;
     
     private void Start()
     {
