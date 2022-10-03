@@ -20,26 +20,31 @@ public class tree_spawn : MonoBehaviour
 
     void Update()
     {
-        if (inRange && Input.GetButtonDown("Fire1"))
-        {
-            if (inventory.inInventory[6] == true)
+        // chequeo de inventario
+    if (inventory.inInventory[6] == true)
+    {
+            if (inRange && Input.GetButtonDown("Fire1"))
             {
-                val = myanim.GetBool("Change");
-                val = true;
-                myanim.SetBool("Change", val);
-                Destroy(inventory.clone);
+             val = myanim.GetBool("Change");
+             val = true;
+             myanim.SetBool("Change", val);
+             Destroy(inventory.clone);
+             inventory.inInventory[6] = false;
+            }    
+    }
+    else if (inventory.inInventory[4] == true)
+    {
+            dialogue.inRange = false;
+            if (inRange && Input.GetButtonDown("Fire1"))
+            { 
+             val = myanim.GetBool("Change");
+             val = false;
+             myanim.SetBool("Change", val);
+             SpawnTiger();
+             Destroy(inventory.clone);
+             inventory.inInventory[4] = false;
             }
-            else if (inventory.inInventory[4] == true)
-            {
-                dialogue.inRange = false;
-                val = myanim.GetBool("Change");
-                val = false;
-                myanim.SetBool("Change", val);
-                SpawnTiger();
-                Destroy(inventory.clone);
-
-            }
-        }
+    }
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -60,8 +65,9 @@ public class tree_spawn : MonoBehaviour
 
     private void SpawnTiger()
     {
+        //spawn item
         GameObject item = Instantiate(tigerPrefab) as GameObject;
-        item.transform.position = new Vector2(-6.3f, -8.4f);
+        item.transform.position = new Vector2(4.4f, -8f);
         Destroy(dialogue);
         Destroy(dialogue.dialogueMark);
 

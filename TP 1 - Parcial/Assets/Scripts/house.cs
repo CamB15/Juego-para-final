@@ -22,9 +22,9 @@ public class house : MonoBehaviour
 
     void Update()
     {
-        if (inRange && Input.GetButtonDown("Fire1"))
+        if (inventory.inInventory[0] == true)
         {
-            if (inventory.inInventory[0] == true)
+            if (inRange && Input.GetButtonDown("Fire1"))
             {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
@@ -32,16 +32,21 @@ public class house : MonoBehaviour
                 myanim.SetBool("Change", val);
                 SpawnGlass();
                 Destroy(inventory.clone);
-            }
-            else if (inventory.inInventory[8] == true)
-            { //hacer que aparescan enemigos
+            }       
+        }
+        else if (inventory.inInventory[8] == true)
+        { //hacer que aparescan enemigos despues
+            if (inRange && Input.GetButtonDown("Fire1"))
+            {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = false;
                 myanim.SetBool("Change", val);
                 Destroy(inventory.clone);
             }
+               
         }
+        
         
     }
 

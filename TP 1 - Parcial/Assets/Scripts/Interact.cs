@@ -15,16 +15,16 @@ public class Interact : MonoBehaviour
     public float moveY;
 
     void Start()
-    {
+    { //traer componentes
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
         myanim = GetComponent<Animator>();
         dialogue = GetComponent<Dialogue>();
     }
 
     void Update()
-    {
+    {//chequeo de inventario
         if (inventory.inInventory[i] == true)
-        {
+        { //cambio de animacion
             dialogue.inRange = false;
             if (inRange && Input.GetButtonDown("Fire1"))
             {
@@ -55,7 +55,7 @@ public class Interact : MonoBehaviour
     }
 
     private void Spawn()
-    {
+    { //spawn de item y destruccion de dialogo
         GameObject item = Instantiate(prefab) as GameObject;
         item.transform.position = new Vector2(moveX, moveY);
         Destroy(dialogue);

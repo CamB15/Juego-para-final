@@ -25,6 +25,7 @@ public class Pick_up : MonoBehaviour
     {
         if (inRange && Input.GetButtonDown("Fire1"))
         {
+            //activacion de bool dependiendo de el tag del item
             if (this.tag == "Rock") inventory.inInventory[0] = true;
             else if (this.tag == "Bino") inventory.inInventory[1] = true;
             else if (this.tag == "Glass") inventory.inInventory[2] = true;
@@ -43,10 +44,9 @@ public class Pick_up : MonoBehaviour
     {
         for (int i = 0; i < inventory.slots.Length; i++)
         {
-          
             if (inventory.isFull[i] == false)
             {
-                //el item se agrega
+                //el item se agrega al inventario y se destruye de la escena
                 inventory.isFull[i] = true;
                 inventory.clone = Instantiate(item, inventory.slots[i].transform, false);
                 Destroy(gameObject);

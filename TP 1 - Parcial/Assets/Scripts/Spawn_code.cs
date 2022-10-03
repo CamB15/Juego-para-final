@@ -19,10 +19,11 @@ public class Spawn_code : MonoBehaviour
     }
     void Update()
     {
+        //chequeo para que realize 1 de 2 opciones
         if(this.CompareTag("Tent"))
         { 
             if (inventory.inInventory[i] == true)
-            {
+            { //opcion de destruir dialogo
                 dialogue.inRange = false;
                 if (inRange && Input.GetButtonDown("Fire1"))
                 {
@@ -79,7 +80,7 @@ public class Spawn_code : MonoBehaviour
         }
     }
     private void SpawnCode()
-    {
+    {   // spawn UI 
         item = Instantiate(codeNum, GameObject.FindGameObjectWithTag("Canvas").transform, false);
     }
 }

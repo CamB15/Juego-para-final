@@ -58,6 +58,7 @@ public class Dialogue : MonoBehaviour
 
     private void StartDialogue()
     {
+        // activacion de UI y freeze de pantalla
         SpawnFace();
         dialogueStart = true;
         dialoguePanel.SetActive(true);
@@ -69,6 +70,7 @@ public class Dialogue : MonoBehaviour
 
     private IEnumerator Showline()
     {
+        //para que se muestre cada caracter
         dialogueText.text = string.Empty;
         foreach (char ch in lines[lineIndex])
         {
@@ -78,6 +80,7 @@ public class Dialogue : MonoBehaviour
     }
     private void NextLine()
     {
+        //pase de linea - (modificar para que pase de linea dependiendo si tenes entregas item o no)
         lineIndex++;
         if (lineIndex < lines.Length)
         {
@@ -95,8 +98,7 @@ public class Dialogue : MonoBehaviour
 
     private void SpawnFace()
     {
-        clone = Instantiate(item, dialoguePanel.transform, false);
-        
+        clone = Instantiate(item, dialoguePanel.transform, false);  
     }
 
   
