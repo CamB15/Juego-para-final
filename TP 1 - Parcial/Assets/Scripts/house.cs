@@ -34,7 +34,7 @@ public class house : MonoBehaviour
                 Destroy(inventory.clone);
             }       
         }
-        else if (inventory.inInventory[8] == true)
+        else if (inventory.inInventory[7] == true)
         { //hacer que aparescan enemigos despues
             if (inRange && Input.GetButtonDown("Fire1"))
             {
@@ -43,11 +43,8 @@ public class house : MonoBehaviour
                 val = false;
                 myanim.SetBool("Change", val);
                 Destroy(inventory.clone);
-            }
-               
-        }
-        
-        
+            }   
+        }  
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -55,7 +52,6 @@ public class house : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = true;
-
         }
     }
 
@@ -64,7 +60,6 @@ public class house : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = false;
-
         }
     }
 

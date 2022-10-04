@@ -15,6 +15,9 @@ TagManager:
   - Tiger
   - Canvas
   - Tent
+  - char3
+  - char2
+  - char1
   layers:
   - Default
   - TransparentFX
