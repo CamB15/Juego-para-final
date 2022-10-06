@@ -11,9 +11,12 @@ public class Digit_display : MonoBehaviour
     private GameObject digit1;
     private GameObject digit2;
     private GameObject digit3;
+    private Keypad_active active;
+    [SerializeField] private GameObject prefab;
 
     void Start ()
     {
+        active = GameObject.FindGameObjectWithTag("Box").GetComponent<Keypad_active>();
         codeSequence = "";
         for(int i = 0; i < characters.Length; i++)
         {
@@ -100,27 +103,23 @@ public class Digit_display : MonoBehaviour
         switch(codeSequence.Length)
         {
             case 1:
-                digit3 = Instantiate(digits[digitJustEntered], GameObject.FindGameObjectWithTag("char3").transform, false);
                 characters[0] = digits[10];
                 characters[1] = digits[10];
-                characters[2] = digit3;
+                characters[2] = Instantiate(digits[digitJustEntered], GameObject.FindGameObjectWithTag("char3").transform, false);
                 break;
 
             case 2:
-                digit2 = Instantiate(characters[2], GameObject.FindGameObjectWithTag("char2").transform, false);
-                digit3 = Instantiate(digits[digitJustEntered], GameObject.FindGameObjectWithTag("char3").transform, false);
+                digit2 = 
                 characters[0]= digits[10];
-                characters[1] = digit2;
-                characters[2] = digit3;
+                characters[1] = Instantiate(characters[2], GameObject.FindGameObjectWithTag("char2").transform, false);
+                characters[2] = Instantiate(digits[digitJustEntered], GameObject.FindGameObjectWithTag("char3").transform, false);
                 break;
 
             case 3:
-                digit1= Instantiate(characters[1], GameObject.FindGameObjectWithTag("char1").transform, false);
-                digit2 = Instantiate(characters[2], GameObject.FindGameObjectWithTag("char2").transform, false);
-                digit3 = Instantiate(digits[digitJustEntered], GameObject.FindGameObjectWithTag("char3").transform, false);
-                characters[0] = digit1;
-                characters[1] = digit2;
-                characters[2] = digit3; 
+
+                characters[0] = Instantiate(characters[1], GameObject.FindGameObjectWithTag("char1").transform, false);
+                characters[1] = Instantiate(characters[2], GameObject.FindGameObjectWithTag("char2").transform, false);
+                characters[2] = Instantiate(digits[digitJustEntered], GameObject.FindGameObjectWithTag("char3").transform, false);
                 break;
         }
     }
@@ -130,6 +129,12 @@ public class Digit_display : MonoBehaviour
         if (codeSequence == "793")
         {
             print("Correct");
+            active.active = false;
+            Destroy(active.nums);
+            Destroy(active.display);
+            Destroy(active.mark);
+            Destroy(active.cp);
+            Spawn();
         }
         else
         {
@@ -140,12 +145,20 @@ public class Digit_display : MonoBehaviour
 
     private void ResetDisplay()
     {
-        //arreglar
+        //destruye los numeros en pantalla de cada character
         for (int i = 0; i < characters.Length; i++)
         {
-            while(transform.childCount > 0)
+            while(GameObject.FindGameObjectWithTag("char1").transform.childCount > 0)
             {
-                DestroyImmediate(transform.GetChild(0).gameObject);
+                DestroyImmediate(GameObject.FindGameObjectWithTag("char1").transform.GetChild(0).gameObject);   
+            }
+            while (GameObject.FindGameObjectWithTag("char2").transform.childCount > 0)
+            {
+                DestroyImmediate(GameObject.FindGameObjectWithTag("char2").transform.GetChild(0).gameObject);
+            }
+            while (GameObject.FindGameObjectWithTag("char3").transform.childCount > 0)
+            {
+                DestroyImmediate(GameObject.FindGameObjectWithTag("char3").transform.GetChild(0).gameObject);
             }
         }
         codeSequence = "";
@@ -153,5 +166,10 @@ public class Digit_display : MonoBehaviour
     private void OnDestroy()
     {
         Push_button.ButtonPressed -= AddDigitToCode;
+    }
+    private void Spawn()
+    {
+        GameObject item = Instantiate(prefab) as GameObject;
+        item.transform.position = new Vector2(-6.1f, -8.3f);
     }
 }

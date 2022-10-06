@@ -10,10 +10,12 @@ public class Tent : MonoBehaviour
     public GameObject boxPrefab;
     private bool isBox = false;
     public GameObject dialogueMark;
+    private BoxCollider2D cp;
 
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
+        cp = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -51,5 +53,6 @@ public class Tent : MonoBehaviour
         item.transform.position = new Vector2(-5.9f, -7f);
         isBox = true;
         Destroy(dialogueMark);
+        Destroy(cp);
     }
 }

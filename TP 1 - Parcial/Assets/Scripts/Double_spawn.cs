@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class house : MonoBehaviour
+public class Double_spawn : MonoBehaviour
 {
     private inventory inventory;
     private Animator myanim;
     private bool val;
     private bool inRange;
-    public GameObject glassPrefab;
+    public GameObject prefab;
+    public GameObject prefabTwo;
     private Dialogue dialogue;
-
-
+    [SerializeField] private float moveX;
+    [SerializeField] private float moveY;
+    [SerializeField] private float posX;
+    [SerializeField] private float posY;
+    [SerializeField] private int i;
+    [SerializeField] private int n;
 
     void Start()
     {
@@ -22,7 +27,7 @@ public class house : MonoBehaviour
 
     void Update()
     {
-        if (inventory.inInventory[0] == true)
+        if (inventory.inInventory[i] == true)
         {
             if (inRange && Input.GetButtonDown("Fire1"))
             {
@@ -30,21 +35,24 @@ public class house : MonoBehaviour
                 val = myanim.GetBool("Change");
                 val = true;
                 myanim.SetBool("Change", val);
-                SpawnGlass();
+                Spawn();
                 Destroy(inventory.clone);
-            }       
+                inventory.inInventory[i] = false;
+            }
         }
-        else if (inventory.inInventory[7] == true)
-        { //hacer que aparescan enemigos despues
+        else if (inventory.inInventory[n] == true)
+        { 
             if (inRange && Input.GetButtonDown("Fire1"))
             {
                 dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = false;
                 myanim.SetBool("Change", val);
+                SpawnTwo();
                 Destroy(inventory.clone);
-            }   
-        }  
+                inventory.inInventory[n] = false;
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -63,11 +71,17 @@ public class house : MonoBehaviour
         }
     }
 
-    private void SpawnGlass()
+    private void Spawn()
     {
-        GameObject item = Instantiate(glassPrefab) as GameObject;
-        item.transform.position = new Vector2(10, -1);
+        GameObject item = Instantiate(prefab) as GameObject;
+        item.transform.position = new Vector2(moveX, moveY);
+    }
+    private void SpawnTwo()
+    {
+        GameObject item = Instantiate(prefabTwo) as GameObject;
+        item.transform.position = new Vector2(posX, posY);
+        Destroy(dialogue);
+        Destroy(dialogue.dialogueMark);
     }
 }
 
-  

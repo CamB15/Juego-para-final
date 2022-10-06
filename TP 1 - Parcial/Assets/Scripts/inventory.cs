@@ -9,5 +9,4 @@ public class inventory : MonoBehaviour
     public bool[] inInventory;
     public GameObject clone;
   
-
 }

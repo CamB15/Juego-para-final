@@ -18,6 +18,8 @@ TagManager:
   - char3
   - char2
   - char1
+  - Box
+  - Key
   layers:
   - Default
   - TransparentFX
