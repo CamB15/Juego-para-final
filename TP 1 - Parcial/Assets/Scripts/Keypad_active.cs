@@ -20,25 +20,25 @@ public class Keypad_active : MonoBehaviour
     }
     void Update ()
     {
-        if (inRange && Input.GetButtonDown("Keypad"))
+        if (inRange && Input.GetButtonDown("Fire2"))
         {
-            if(active)
+            if (active)
             {
                 if (flipflop == false)
                 {
                     nums = Instantiate(keypad, GameObject.FindGameObjectWithTag("Canvas").transform, false);
                     display = Instantiate(screen, GameObject.FindGameObjectWithTag("Canvas").transform, false);
                     flipflop = !flipflop;
+                    Time.timeScale = 0f;
                 }
                 else
                 {
                     Destroy(nums);
                     Destroy(display);
                     flipflop = !flipflop;
+                    Time.timeScale = 1f;
                 }
             }
-            else if (!active)
-            { }
         }
         
     }

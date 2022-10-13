@@ -29,6 +29,7 @@ public class Double_spawn : MonoBehaviour
     {
         if (inventory.inInventory[i] == true)
         {
+            dialogue.inRange = false;
             if (inRange && Input.GetButtonDown("Fire1"))
             {
                 dialogue.inRange = false;
@@ -40,11 +41,11 @@ public class Double_spawn : MonoBehaviour
                 inventory.inInventory[i] = false;
             }
         }
-        else if (inventory.inInventory[n] == true)
-        { 
+        else if (inventory.inInventory[n] == true)        
+        {
+            dialogue.inRange = false;
             if (inRange && Input.GetButtonDown("Fire1"))
             {
-                dialogue.inRange = false;
                 val = myanim.GetBool("Change");
                 val = false;
                 myanim.SetBool("Change", val);

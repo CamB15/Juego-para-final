@@ -20,6 +20,7 @@ TagManager:
   - char1
   - Box
   - Key
+  - enemy
   layers:
   - Default
   - TransparentFX

@@ -9,24 +9,30 @@ public class Tent : MonoBehaviour
     private bool inRange;
     public GameObject boxPrefab;
     private bool isBox = false;
-    public GameObject dialogueMark;
-    private BoxCollider2D cp;
+    public Dialogue dialogue;
+
 
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<inventory>();
-        cp = GetComponent<BoxCollider2D>();
+        dialogue = GetComponent<Dialogue>();
     }
 
     void Update()
     {
-        if (inRange && Input.GetButtonDown("Fire1"))
+        if(inventory.inInventory[8] == false)
         {
-            if (isBox == false)
+            dialogue.inRange = false;
+            if (inRange && Input.GetButtonDown("Fire1"))
             {
-                SpawnBox();
-            }  
+                if (isBox == false)
+                {
+                    SpawnBox();
+
+                }
+            }
         }
+      
     }
 
     void OnTriggerEnter2D(Collider2D collission)
@@ -34,7 +40,6 @@ public class Tent : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = true;
-            dialogueMark.SetActive(true);
         }
     }
 
@@ -43,7 +48,6 @@ public class Tent : MonoBehaviour
         if (collission.CompareTag("Player"))
         {
             inRange = false;
-            dialogueMark.SetActive(false);
         }
     }
 
@@ -52,7 +56,8 @@ public class Tent : MonoBehaviour
         GameObject item = Instantiate(boxPrefab) as GameObject;
         item.transform.position = new Vector2(-5.9f, -7f);
         isBox = true;
-        Destroy(dialogueMark);
-        Destroy(cp);
+        Destroy(dialogue);
+        Destroy(dialogue.dialogueMark);
+
     }
 }

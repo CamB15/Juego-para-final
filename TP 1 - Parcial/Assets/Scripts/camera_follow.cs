@@ -4,21 +4,44 @@ using UnityEngine;
 
 public class camera_follow : MonoBehaviour
 {
-    public GameObject player;
-    [Range(0, 0.5f)]
-    public float smoothtime = 0.05f;
-    public Vector3 newposition;
 
-    void LateUpdate()
+    public GameObject target;
+    private float targetX;
+    private float targetY;
+
+    private float posX;
+    private float posY;
+
+    public float rightMax;
+    public float leftMax;
+    public float heightMax;
+    public float heightMin;
+
+    public float speed;
+
+
+
+    void Move()
     {
-        Vector3 empty = Vector3.zero;
-        newposition= Vector3.SmoothDamp(transform.position, player.transform.position, ref empty, smoothtime);
-        newposition.z = -10;
+        if (target)
+        {
+            targetX = target.transform.position.x;
+            targetY = target.transform.position.y;
+            if(targetX > leftMax && targetX < rightMax)
+            {
+                posX = targetX;
+            }
+            if ( targetY<heightMax && targetY > heightMin)
+            {
+                posY = targetY;
+            }
+            transform.position = Vector3.Lerp(transform.position, new Vector3(posX, posY, -1), speed * Time.deltaTime);
 
-        transform.position = newposition;
-
-        
-
+        }
+    }
+    void Update()
+    {
+        Move();
     }
 
 }

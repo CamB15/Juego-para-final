@@ -130,11 +130,13 @@ public class Digit_display : MonoBehaviour
         {
             print("Correct");
             active.active = false;
+            Destroy(active);
             Destroy(active.nums);
             Destroy(active.display);
             Destroy(active.mark);
             Destroy(active.cp);
             Spawn();
+            Time.timeScale = 1f;
         }
         else
         {
