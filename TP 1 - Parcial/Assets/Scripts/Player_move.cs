@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Player_move : MonoBehaviour
 {
@@ -19,10 +20,15 @@ public class Player_move : MonoBehaviour
     public bang bullet;
     private bool flipflop = true;
 
+    public AudioClip walk;
+    AudioSource source;
+    public AudioMixerGroup mixer;
+
     private void Start()
     {
         myrig = GetComponent<Rigidbody2D>();
         myanim = GetComponent<Animator>();
+        source = Sound_Manager.instance.CreateASource(walk ,mixer, false);
     }
 
     void Update()
@@ -45,7 +51,7 @@ public class Player_move : MonoBehaviour
                 MyBullet.MoveTo(shoot_point.position, shoot_point.up);
                 flipflop = !flipflop;
             }
-            
+
         }
         else
         {
@@ -59,7 +65,15 @@ public class Player_move : MonoBehaviour
                 flipflop = !flipflop;
             }
         }
+        
+        if (myrig.velocity.magnitude > 0.1)
+        {
+            source.Play();
+        }
+        else
+        {
 
+        }
     }
     private void FixedUpdate()
     {
